@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        #container {
+            margin-top: 10%;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        #yes, #no {
+            padding: 12px 25px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #ff1493;
+        }
+        #no {
+            position: absolute;
+            background-color: #808080;
+            color: white;
+        }
+        #response {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        #close {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    </audio>
+<audio id="background-music" autoplay loop>
+    <source src="https://files.catbox.moe/a15pgr.mp3" type="audio/mp3">
+</audio>
+
+
+
+    <div id="container">
+        <!-- Small image above the question -->
+        <img src="https://imagizer.imageshack.com/img922/5299/2ZhGHg.gif" alt="Small Image" style="width: 150px; margin-bottom: 20px;">
+        <p>On 10th lets ditch the 2nd session... Lie about it at ur home.. and let's escape for a bit, just u & me. I have a feeling we’d have a lot of fun 😳</p>
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    
+    <div id="response">
+        <p>Yay! I knew you'd say yes! ❤️</p>
+        <button id="close">Close</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const responseBox = document.getElementById('response');
+        const closeButton = document.getElementById('close');
+
+        document.addEventListener('mousemove', function(event) {
+            const rect = noButton.getBoundingClientRect();
+            const distance = Math.hypot(event.clientX - (rect.left + rect.width / 2), event.clientY - (rect.top + rect.height / 2));
+            if (distance < 100) {
+                noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + 'px';
+                noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + 'px';
+            }
+        });
+
+        yesButton.addEventListener('click', function() {
+            document.body.style.background = "url('https://i.imgur.com/yourimage.png') no-repeat center center fixed";
+            document.body.style.backgroundSize = "cover";
+            responseBox.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', function() {
+            responseBox.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
